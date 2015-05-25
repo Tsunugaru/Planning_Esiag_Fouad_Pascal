@@ -24,6 +24,7 @@ public class PlanningController extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        //bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         anneeLabel = new javax.swing.JLabel();
         anneeTextField = new javax.swing.JTextField();
@@ -32,6 +33,8 @@ public class PlanningController extends javax.swing.JPanel {
         moisLabel = new javax.swing.JLabel();
         semaineLabel = new javax.swing.JLabel();
         confirmerButton = new javax.swing.JButton();
+        semaineComboBox = new javax.swing.JComboBox();
+        moisComboBox = new javax.swing.JComboBox();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Contrôleur", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 13), new java.awt.Color(51, 51, 255))); // NOI18N
 
@@ -54,6 +57,14 @@ public class PlanningController extends javax.swing.JPanel {
                 confirmerButtonActionPerformed(evt);
             }
         });
+
+        semaineComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4" }));
+        semaineComboBox.setSelectedItem(semaineComboBox);
+
+        moisComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+
+        //org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, moisComboBox, org.jdesktop.beansbinding.ELProperty.create("${selectedItem}"), moisComboBox, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        //bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -107,8 +118,8 @@ public class PlanningController extends javax.swing.JPanel {
             this.panelCalendrier.getModele().getDates().clear();
         }
         int mois;
-        mois = Integer.parseInt(moisTextField.getText());
-        int semaine = Integer.parseInt(semaineTextField.getText());
+        mois = Integer.parseInt(moisComboBox.getSelectedItem().toString());
+        int semaine = Integer.parseInt(semaineComboBox.getSelectedItem().toString());
         Date d = new Date();
         d.setAnnee(a);
         d.setMois(d.associerMois(mois));
@@ -126,9 +137,12 @@ public class PlanningController extends javax.swing.JPanel {
     private javax.swing.JLabel anneeLabel;
     private javax.swing.JTextField anneeTextField;
     private javax.swing.JButton confirmerButton;
+    private javax.swing.JComboBox moisComboBox;
     private javax.swing.JLabel moisLabel;
-    private javax.swing.JTextField moisTextField;
+    private javax.swing.JComboBox semaineComboBox;
     private javax.swing.JLabel semaineLabel;
+    //private org.jdesktop.beansbinding.BindingGroup bindingGroup;
+    private javax.swing.JTextField moisTextField;
     private javax.swing.JTextField semaineTextField;
     // End of variables declaration//GEN-END:variables
 }
