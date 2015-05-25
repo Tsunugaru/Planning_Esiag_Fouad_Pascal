@@ -42,14 +42,14 @@ public class tableauEmploiDuTempsTest {
     private ArrayList<Module> modules = new ArrayList<Module>();
 
     @Test
-    // Teste n°1 si le tableau de EmploiDuTemps a une colonne par jour de la semaine et  deux lignes par semaine
+    // Test n°1 si le tableau de EmploiDuTemps a une colonne par jour de la semaine et  deux lignes par semaine
     public void tabconf() {
         assertEquals(7, EmploiDuTemps.modeleTableau.getColumnCount(), 1);
         assertEquals(2, EmploiDuTemps.modeleTableau.getRowCount(), 1);
 
     }
 
-    // Teste n°2 une fois l'année choisie les jours sont crées automatiquement
+    // Test n°2 une fois l'année choisie les jours sont crées automatiquement
     @Test
     public void jourannée() {
         assertEquals(365, t.nbJoursTotal());
@@ -61,7 +61,30 @@ public class tableauEmploiDuTempsTest {
     public void bisextile() {
         assertEquals(366, bis.nbJoursTotal());
     }
+    //Test n°4 Pouvoir marqué les jours non ouvré
+    @Test
+    public void cellNotEditable(){
+       assertFalse(EmploiDuTemps.modeleTableau.isCellEditable(0, 5));
+       assertFalse(EmploiDuTemps.modeleTableau.isCellEditable(0, 6));
+             
+   }
+    // Test n°5 sauve le planning dans un fichier stockage binaire
+    @Test
+    public void serialiser() throws IOException, FileNotFoundException, ClassNotFoundException {
+        File file = new File("testunit");
+        planning.serialiser(file);
+        assertTrue(file.exists());
+    }
 
+    @Test
+    public void deserialiser() throws IOException, FileNotFoundException, ClassNotFoundException {
+        File file = new File("testUnitaire");
+        planning.setFormations(formations);
+        planning.serialiser(file);
+        sauvegarde.deserialiser(file);
+        Assert.assertEquals(planning.getFormations(), sauvegarde.getFormations());
+    }
+    
     // Test n°7 Teste si chaque module a une couleur, un nom et une abbréviation distinct des autres
     @Test
     public void TestConstructeurModule() {
@@ -89,7 +112,14 @@ public class tableauEmploiDuTempsTest {
         assertEquals(blue, test.getCouleur());
         assertEquals(12, test.getDuree(), 0);
     }
-
+    // Test n°9 Les modules ont un nom couleur et appréviation distinct des autres
+    @Test
+    public void DiffModule(){
+    assertFalse(test.getNom().equals(test2.getNom()));
+    assertFalse(test.getAbreviation().equals(test2.getAbreviation()));
+    assertFalse(test.getCouleur()==test2.getCouleur());
+}
+    
     //  Test  n°11 la durée en heure est affichée pour chaque module
     @Test
     public void nbheureModule() {
@@ -98,45 +128,16 @@ public class tableauEmploiDuTempsTest {
     }
 
     // Test n°12 la durée total de la formation en nombre de jourés et d'heures est affiché
-    /**@Test
+    @Test
     public void nbheureFormation() {
 
         formation.ajouterModule(modules, test);
         assertEquals(24, formation.dureeTotale(), 1);
-    }**/
+    }
     
-    // Test n°10 sauve le planning sauve ces données
-    @Test
-    public void serialiser() throws IOException, FileNotFoundException, ClassNotFoundException {
-        File file = new File("testunit");
-        planning.serialiser(file);
-        assertTrue(file.exists());
-    }
+    
 
-    @Test
-    public void deserialiser() throws IOException, FileNotFoundException, ClassNotFoundException {
-        File file = new File("testUnitaire");
-        planning.setFormations(formations);
-        planning.serialiser(file);
-        sauvegarde.deserialiser(file);
-        Assert.assertEquals(planning.getFormations(), sauvegarde.getFormations());
-    }
-
- @Test
-   public void cellNotEditable(){
-       assertFalse(EmploiDuTemps.modeleTableau.isCellEditable(0, 5));
-       assertFalse(EmploiDuTemps.modeleTableau.isCellEditable(0, 6));
-             
-   }
-//T
-@Test
-public void DiffModule(){
-    assertFalse(test.getNom().equals(test2.getNom()));
-    assertFalse(test.getAbreviation().equals(test2.getAbreviation()));
-    assertFalse(test.getCouleur()==test2.getCouleur());
-}
-
-
+ 
 
 
 
