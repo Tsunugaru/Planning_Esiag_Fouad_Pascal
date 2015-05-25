@@ -95,7 +95,7 @@ public class tableauEmploiDuTempsTest {
         assertEquals(blue, test.getCouleur());
         assertEquals(12, test.getDuree(), 0);
     }
-    // Test n°9
+    // Test n°9 Les modules ont un nom couleur et appréviation distinct des autres
     @Test
     public void DiffModule(){
     assertFalse(test.getNom().equals(test2.getNom()));
