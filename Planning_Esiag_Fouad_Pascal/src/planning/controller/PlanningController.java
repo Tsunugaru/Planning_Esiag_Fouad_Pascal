@@ -7,6 +7,7 @@ import planning.view.PanelCalendrier;
 public class PlanningController extends javax.swing.JPanel {
 
     Annee t;
+    Mois m;
     Calendrier c;
     PanelCalendrier panelCalendrier;
 
