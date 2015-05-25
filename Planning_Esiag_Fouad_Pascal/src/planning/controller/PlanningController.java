@@ -24,7 +24,7 @@ public class PlanningController extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        //bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         anneeLabel = new javax.swing.JLabel();
         anneeTextField = new javax.swing.JTextField();
@@ -61,8 +61,8 @@ public class PlanningController extends javax.swing.JPanel {
 
         moisComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
-        //org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, moisComboBox, org.jdesktop.beansbinding.ELProperty.create("${selectedItem}"), moisComboBox, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
-        //bindingGroup.addBinding(binding);
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, moisComboBox, org.jdesktop.beansbinding.ELProperty.create("${selectedItem}"), moisComboBox, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -116,7 +116,7 @@ public class PlanningController extends javax.swing.JPanel {
 
         anneeLabel.getAccessibleContext().setAccessibleName("Année :");
 
-        //bindingGroup.bind();
+        bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
     private void anneeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anneeTextFieldActionPerformed
@@ -155,6 +155,6 @@ public class PlanningController extends javax.swing.JPanel {
     private javax.swing.JLabel moisLabel;
     private javax.swing.JComboBox semaineComboBox;
     private javax.swing.JLabel semaineLabel;
-    //private org.jdesktop.beansbinding.BindingGroup bindingGroup;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
