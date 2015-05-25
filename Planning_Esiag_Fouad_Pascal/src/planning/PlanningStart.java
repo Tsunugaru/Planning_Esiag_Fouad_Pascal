@@ -44,7 +44,7 @@ public class PlanningStart extends javax.swing.JFrame {
         c.gridy = 1;
         add(emploiDuTempsView, c);
 
-        setSize(1000, 900);
+        setSize(920, 680);
         setVisible(true);
     }
 
