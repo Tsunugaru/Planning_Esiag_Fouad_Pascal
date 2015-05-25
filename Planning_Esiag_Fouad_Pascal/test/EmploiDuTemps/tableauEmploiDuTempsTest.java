@@ -61,7 +61,13 @@ public class tableauEmploiDuTempsTest {
     public void bisextile() {
         assertEquals(366, bis.nbJoursTotal());
     }
-
+    //Test n°4 Pouvoir marqué les jours non ouvré
+    @Test
+    public void cellNotEditable(){
+       assertFalse(EmploiDuTemps.modeleTableau.isCellEditable(0, 5));
+       assertFalse(EmploiDuTemps.modeleTableau.isCellEditable(0, 6));
+             
+   }
     // Test n°7 Teste si chaque module a une couleur, un nom et une abbréviation distinct des autres
     @Test
     public void TestConstructeurModule() {
@@ -89,22 +95,13 @@ public class tableauEmploiDuTempsTest {
         assertEquals(blue, test.getCouleur());
         assertEquals(12, test.getDuree(), 0);
     }
-
-    //  Test  n°11 la durée en heure est affichée pour chaque module
+    // Test n°9
     @Test
-    public void nbheureModule() {
-        test.setDuree(28);
-        assertEquals(28, test.getDuree(), 1);
-    }
-
-    // Test n°12 la durée total de la formation en nombre de jourés et d'heures est affiché
-    /**@Test
-    public void nbheureFormation() {
-
-        formation.ajouterModule(modules, test);
-        assertEquals(24, formation.dureeTotale(), 1);
-    }**/
-    
+    public void DiffModule(){
+    assertFalse(test.getNom().equals(test2.getNom()));
+    assertFalse(test.getAbreviation().equals(test2.getAbreviation()));
+    assertFalse(test.getCouleur()==test2.getCouleur());
+}
     // Test n°10 sauve le planning sauve ces données
     @Test
     public void serialiser() throws IOException, FileNotFoundException, ClassNotFoundException {
@@ -121,22 +118,25 @@ public class tableauEmploiDuTempsTest {
         sauvegarde.deserialiser(file);
         Assert.assertEquals(planning.getFormations(), sauvegarde.getFormations());
     }
+    
+    //  Test  n°11 la durée en heure est affichée pour chaque module
+    @Test
+    public void nbheureModule() {
+        test.setDuree(28);
+        assertEquals(28, test.getDuree(), 1);
+    }
 
- @Test
-   public void cellNotEditable(){
-       assertFalse(EmploiDuTemps.modeleTableau.isCellEditable(0, 5));
-       assertFalse(EmploiDuTemps.modeleTableau.isCellEditable(0, 6));
-             
-   }
-//T
-@Test
-public void DiffModule(){
-    assertFalse(test.getNom().equals(test2.getNom()));
-    assertFalse(test.getAbreviation().equals(test2.getAbreviation()));
-    assertFalse(test.getCouleur()==test2.getCouleur());
-}
+    // Test n°12 la durée total de la formation en nombre de jourés et d'heures est affiché
+    /**@Test
+    public void nbheureFormation() {
 
+        formation.ajouterModule(modules, test);
+        assertEquals(24, formation.dureeTotale(), 1);
+    }**/
+    
+    
 
+ 
 
 
 
