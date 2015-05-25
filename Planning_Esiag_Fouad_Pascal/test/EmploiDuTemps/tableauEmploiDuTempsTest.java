@@ -35,7 +35,9 @@ public class tableauEmploiDuTempsTest {
     Annee bis = new Annee(2012);
     private ArrayList<Seance> listeSeances;
     Seances sc = new Seances(listeSeances);
+    Seances sc2 = new Seances(listeSeances);
     Module test = new Module("Math", "MTH", red, 24, sc);
+    Module test2 = new Module("Java","IHM",blue,42,sc2);
     Formation formation = new Formation("ESIAG", t);
     private ArrayList<Module> modules = new ArrayList<Module>();
 
@@ -96,12 +98,12 @@ public class tableauEmploiDuTempsTest {
     }
 
     // Test n°12 la durée total de la formation en nombre de jourés et d'heures est affiché
-    @Test
+    /**@Test
     public void nbheureFormation() {
 
         formation.ajouterModule(modules, test);
         assertEquals(24, formation.dureeTotale(), 1);
-    }
+    }**/
     
     // Test n°10 sauve le planning sauve ces données
     @Test
@@ -119,4 +121,28 @@ public class tableauEmploiDuTempsTest {
         sauvegarde.deserialiser(file);
         Assert.assertEquals(planning.getFormations(), sauvegarde.getFormations());
     }
+
+ @Test
+   public void cellNotEditable(){
+       assertFalse(EmploiDuTemps.modeleTableau.isCellEditable(0, 5));
+       assertFalse(EmploiDuTemps.modeleTableau.isCellEditable(0, 6));
+             
+   }
+//T
+@Test
+public void DiffModule(){
+    assertFalse(test.getNom().equals(test2.getNom()));
+    assertFalse(test.getAbreviation().equals(test2.getAbreviation()));
+    assertFalse(test.getCouleur()==test2.getCouleur());
+}
+
+
+
+
+
+
+
+
+
+
 }
